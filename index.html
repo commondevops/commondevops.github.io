@@ -1,6 +1,727 @@
-<html>
-  <body>
-    <h1>CommonDevOps</h1>
-    <p>AI + DevOps for scalable systems</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CommonDevOps — Operate Safer. Scale with Confidence.</title>
+  <meta name="description" content="Common DevOps helps software teams reduce delivery friction, improve reliability, harden security, and turn manual operations into repeatable systems." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0b1e3d;
+      --navy-light: #122448;
+      --blue: #1a6cf6;
+      --blue-dark: #1458cc;
+      --blue-muted: #2d5fa0;
+      --white: #ffffff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-400: #94a3b8;
+      --gray-600: #475569;
+      --gray-800: #1e293b;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .nav-logo .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--blue-dark); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.5);
+    }
+    .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+    .btn-dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-dark:hover { background: var(--navy-light); }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--navy);
+      padding: 72px 5% 80px;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-left p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1rem;
+      max-width: 520px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-ctas .btn { padding: 11px 24px; font-size: 0.9rem; }
+
+    /* Typical Engagements card */
+    .engagements-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+
+    .engagements-card h3 {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .engagement-item {
+      margin-bottom: 18px;
+    }
+
+    .engagement-item:last-child { margin-bottom: 0; }
+
+    .engagement-item strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .engagement-item p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* ── VALUE PROPS STRIP ── */
+    #value-props {
+      background: var(--navy-light);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .value-props-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .value-prop {
+      padding: 24px 28px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .value-prop:last-child { border-right: none; }
+
+    .value-prop p {
+      color: rgba(255,255,255,0.78);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    /* ── WHO WE ARE ── */
+    #about {
+      padding: 88px 5%;
+      background: var(--white);
+    }
+
+    .about-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .about-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--gray-800);
+    }
+
+    .about-text .lead {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 24px;
+    }
+
+    .about-text p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 88px 5%;
+      background: var(--gray-50);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--gray-800);
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--gray-600);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--gray-800);
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-card ul li {
+      color: var(--gray-600);
+      font-size: 0.875rem;
+      padding: 5px 0;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .service-card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .services-cta {
+      text-align: center;
+      margin-top: 44px;
+    }
+
+    .services-cta .btn {
+      padding: 13px 32px;
+      font-size: 0.95rem;
+    }
+
+    /* ── APPROACH ── */
+    #approach {
+      padding: 88px 5%;
+      background: var(--white);
+    }
+
+    .approach-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .approach-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--gray-800);
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      padding: 88px 5%;
+      background: var(--gray-50);
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-200);
+      padding: 24px 0;
+    }
+
+    .faq-item:first-child { border-top: 1px solid var(--gray-200); }
+
+    .faq-q {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 10px;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT / CTA BANNER ── */
+    #contact {
+      padding: 80px 5%;
+      background: var(--navy);
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    #contact p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    #contact .btn {
+      padding: 14px 36px;
+      font-size: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060f1f;
+      padding: 40px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.88rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.83rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.8rem;
+      width: 100%;
+      text-align: center;
+      margin-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 16px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .engagements-card { max-width: 480px; }
+      .value-props-inner { grid-template-columns: 1fr; }
+      .value-prop { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .value-prop:last-child { border-bottom: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .approach-steps { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      footer { justify-content: center; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .approach-steps { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">CD</div>
+      Common DevOps
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Book a Discovery Call</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1>Operate safer.<br>Scale with a platform<br>your team can trust.</h1>
+        <p>Common DevOps helps software teams reduce delivery friction, improve reliability, harden security, and turn manual operations into repeatable systems. We act as a senior consulting partner that can assess, design, implement, and document the DevOps foundation your business needs.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Talk to Our Team</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
+        </div>
+      </div>
+      <div class="engagements-card">
+        <h3>Typical Engagements</h3>
+        <div class="engagement-item">
+          <strong>Platform Engineering</strong>
+          <p>Internal developer platforms, build pipelines, cloud environments, deployment standards</p>
+        </div>
+        <div class="engagement-item">
+          <strong>DevSecOps</strong>
+          <p>Security gates, secrets handling, dependency hygiene, policy enforcement, audit readiness</p>
+        </div>
+        <div class="engagement-item">
+          <strong>Delivery Optimization</strong>
+          <p>Workflow redesign, release automation, incident reduction, observability, service ownership</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPS STRIP -->
+  <div id="value-props">
+    <div class="value-props-inner">
+      <div class="value-prop">
+        <p>Faster releases with lower deployment risk</p>
+      </div>
+      <div class="value-prop">
+        <p>Clearer CI/CD, cloud, and security operating model</p>
+      </div>
+      <div class="value-prop">
+        <p>Production-ready documentation and team handoff</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO WE ARE -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2>Who we are</h2>
+        <p class="lead">We build systems that scale.</p>
+        <p>At <strong>Common DevOps</strong>, we partner with engineering teams to design and implement reliable, secure, and scalable delivery systems.</p>
+        <p>Our differentiator is simple. We don't just advise. We build, standardize, and operationalize DevOps foundations that teams can actually use.</p>
+        <p>We combine platform engineering, security practices, and delivery optimization into a cohesive system that reduces risk and accelerates execution.</p>
+        <p>We work alongside your teams to ensure adoption, documentation, and long-term sustainability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR SERVICES -->
+  <section id="services">
+    <div class="section-header">
+      <h2>Our Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Platform Engineering</h3>
+        <ul>
+          <li>Internal Developer Platforms (IDP)</li>
+          <li>CI/CD pipeline design &amp; standardization</li>
+          <li>Cloud environment and milestones</li>
+          <li>Infrastructure as Code (IaC)</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>DevSecOps</h3>
+        <ul>
+          <li>Secure pipeline design</li>
+          <li>Secrets management</li>
+          <li>Dependency and sumerability management</li>
+          <li>Compliance &amp; audit readiness</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>Delivery Optimization</h3>
+        <ul>
+          <li>Workflow redesign</li>
+          <li>Release automation</li>
+          <li>Incident reduction strategies</li>
+          <li>Observability &amp; monitoring systems</li>
+        </ul>
+      </div>
+    </div>
+    <div class="services-cta">
+      <a href="#contact" class="btn btn-primary">Learn More</a>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="approach-inner">
+      <div class="section-header">
+        <h2>How We Work</h2>
+        <p>A structured, low-disruption engagement model designed to fit alongside your existing team.</p>
+      </div>
+      <div class="approach-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Assess</h3>
+          <p>We audit your current delivery pipeline, infrastructure, and security posture to identify gaps and quick wins.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Design</h3>
+          <p>We produce a prioritized roadmap and architecture aligned to your team's capacity and business goals.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Implement</h3>
+          <p>We build alongside your engineers — hands-on, in your environment — not PowerPoint recommendations.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Handoff</h3>
+          <p>We document everything and train your team so the system runs without us long-term.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-header">
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">What size teams do you work with?</p>
+        <p class="faq-a">We work with teams of all sizes — from early-stage startups building their first CI/CD pipeline to enterprise engineering orgs standardizing across multiple platforms.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Do you embed with our team or work separately?</p>
+        <p class="faq-a">We embed. Our engagements are hands-on — we work inside your repos, infrastructure, and tooling alongside your engineers rather than delivering recommendations from the outside.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What cloud platforms do you support?</p>
+        <p class="faq-a">We work across AWS, GCP, and Azure, as well as hybrid and on-prem environments. Our approach is platform-agnostic and toolchain-flexible.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">How long does a typical engagement take?</p>
+        <p class="faq-a">Engagements typically range from 6 to 16 weeks depending on scope. We start with an assessment phase to give you a realistic timeline before any commitment.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What does success look like at the end of an engagement?</p>
+        <p class="faq-a">Your team owns the system, understands it, and can operate it without us. We measure success by adoption, reduced incident rate, and faster delivery — not just deliverables shipped.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact">
+    <h2>Ready to build a platform your team can trust?</h2>
+    <p>Book a free 30-minute discovery call. We'll assess where you are and what it would take to get to where you want to be.</p>
+    <a href="mailto:hello@commondevops.com" class="btn btn-primary">Book a Discovery Call</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <div class="logo-mark" style="width:30px;height:30px;background:#1a6cf6;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.75rem;color:#fff;">CD</div>
+      Common DevOps
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 CommonDevOps. All rights reserved. · <a href="mailto:hello@commondevops.com" style="color:rgba(255,255,255,0.35);">hello@commondevops.com</a></p>
+  </footer>
+
+</body>
 </html>
